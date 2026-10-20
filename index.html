@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SORA CHEAT</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg-color: #0d0914;
+            --panel-bg: rgba(30, 20, 45, 0.6);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-muted: #8b809b;
+            --accent-pink: #ff66cc;
+            --accent-purple: #8a2be2;
+            --accent-gradient: linear-gradient(90deg, #ff66cc 0%, #8a2be2 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at top left, rgba(138, 43, 226, 0.15), transparent 40%),
+                              radial-gradient(circle at bottom right, rgba(255, 102, 204, 0.1), transparent 40%);
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 400px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-pink);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-pink);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Key Info */
+        .key-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .key-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .btn-text {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+        .key-string {
+            color: var(--accent-pink);
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .key-dates {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 16px;
+        }
+
+        .date-col span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 10px;
+            margin-bottom: 4px;
+        }
+
+        /* Status Grid */
+        .status-grid {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            font-size: 11px;
+        }
+        
+        .status-item span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 10px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .status-offline { color: var(--text-muted); }
+        .status-offline::before {
+            content: '●';
+            margin-right: 4px;
+            font-size: 14px;
+        }
+
+        /* Time Bar */
+        .time-bar-container {
+            margin-bottom: 16px;
+        }
+        
+        .time-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .progress-bg {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 4px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 99%;
+            background: var(--accent-gradient);
+            border-radius: 3px;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        /* Game Selector */
+        .game-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .select-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            outline: none;
+            width: 120px;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 16px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 12px;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .tab.active {
+            background: rgba(138, 43, 226, 0.3);
+            color: white;
+            border: 1px solid rgba(138, 43, 226, 0.5);
+        }
+
+        /* Settings Content */
+        .setting-row {
+            margin-bottom: 20px;
+        }
+
+        .setting-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .setting-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .tag {
+            font-size: 9px;
+            background: rgba(255,255,255,0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        .setting-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* iOS Style Toggle */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #333;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute; content: "";
+            height: 18px; width: 18px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background: var(--accent-gradient);
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Range Slider */
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--accent-purple);
+            box-shadow: 0 0 8px var(--accent-purple);
+            cursor: pointer;
+            margin-top: -6px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+        }
+        input[type=range]:focus { outline: none; }
+        
+        .range-value {
+            font-size: 11px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border-color);
+            padding: 2px 8px;
+            border-radius: 10px;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        /* Footer Buttons */
+        .footer-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        .btn-reset {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-apply {
+            flex: 2;
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-dot"></div>
+                SORA CHEAT
+            </div>
+            <div class="header-actions">
+                <button class="btn-outline">TELEGRAM ↗</button>
+                <button class="btn-outline">10 ON</button>
+                <button class="btn-outline">☀</button>
+            </div>
+        </div>
+
+        <!-- Key Info -->
+        <div class="key-header">
+            <div class="key-title">THÔNG TIN KEY</div>
+            <button class="btn-text">Đăng xuất</button>
+        </div>
+        <div class="key-string">SORA●●●●●●921A</div>
+        
+        <div class="key-dates">
+            <div class="date-col">
+                <span>Ngày kích hoạt</span>
+                21:59:46 18/10/2026
+            </div>
+            <div class="date-col" style="text-align: right;">
+                <span>Ngày hết hạn</span>
+                21:59:46 17/11/2026
+            </div>
+        </div>
+
+        <!-- Status Grid -->
+        <div class="status-grid">
+            <div class="status-item">
+                <span>KẾT NỐI</span>
+                <div class="status-offline">OFFLINE (16s)</div>
+            </div>
+            <div class="status-item">
+                <span>ĐANG BẬT</span>
+                <div>10</div>
+            </div>
+            <div class="status-item">
+                <span>KEY HẾT HẠN</span>
+                <div>17/11/2026</div>
+            </div>
+        </div>
+
+        <!-- Time Bar -->
+        <div class="time-bar-container">
+            <div class="time-row">
+                <span>THỜI GIAN KEY CÒN LẠI</span>
+                <span>29 ngày 14:43:07</span>
+            </div>
+            <div class="progress-bg">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-labels">
+                <span>Tháng</span>
+                <span>99%</span>
+            </div>
+        </div>
+
+        <!-- Game Selector -->
+        <div class="game-selector">
+            <div>Chọn game 
+                <select class="select-box">
+                    <option>Free Fire</option>
+                </select>
+            </div>
+            <div class="toggle-switch">
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                Tự mở game sau khi lưu
+            </div>
+        </div>
+        <div class="setting-desc" style="margin-bottom: 16px;">Sau khi lưu có thể bấm Mở game. Bật tự mở nếu đang dùng điện thoại.</div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active">Aim</div>
+            <div class="tab">ESP</div>
+            <div class="tab">Combat</div>
+            <div class="tab">Skins</div>
+            <div class="tab">System</div>
+        </div>
+
+        <!-- Settings Content (Tab Aim) -->
+        <div class="tab-content">
+            <div class="setting-row">
+                <div class="setting-header">
+                    <div>
+                        <span class="setting-title">Aim Silent</span>
+                        <span class="tag">SILENT</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-desc">Silent aim với headshot rate</div>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-header">
+                    <span class="setting-title">Headshot Rate</span>
+                    <span class="range-value">37%</span>
+                </div>
+                <div class="range-container">
+                    <input type="range" min="0" max="100" value="37" oninput="this.previousElementSibling.previousElementSibling.querySelector('.range-value').innerText = this.value + '%'">
+                </div>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-header">
+                    <span class="setting-title">Silent Radius</span>
+                    <span class="range-value">180px</span>
+                </div>
+                <div class="range-container">
+                    <input type="range" min="0" max="500" value="180" oninput="this.previousElementSibling.previousElementSibling.querySelector('.range-value').innerText = this.value + 'px'">
+                </div>
+            </div>
+
+            <div class="setting-row" style="margin-bottom: 0;">
+                <div class="setting-header">
+                    <div>
+                        <span class="setting-title">Aim Bot</span>
+                        <span class="tag">MAGNET</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-header" style="margin-top: 8px;">
+                    <span class="setting-desc">Trạng thái: Sẵn sàng đồng bộ</span>
+                    <span style="font-size: 10px; color: var(--text-muted);">READY</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div class="footer-actions">
+            <button class="btn-reset">Reset</button>
+            <button class="btn-apply">Áp dụng cấu hình</button>
+        </div>
+    </div>
+
+    <script>
+        // Xử lý chuyển Tab
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                // Ở đây bạn có thể thêm logic ẩn/hiện nội dung của từng tab
+            });
+        });
+
+        // Xử lý nút Áp dụng
+        document.querySelector('.btn-apply').addEventListener('click', () => {
+            const btn = document.querySelector('.btn-apply');
+            const originalText = btn.innerText;
+            btn.innerText = 'Đang đồng bộ...';
+            
+            setTimeout(() => {
+                btn.innerText = 'Đã lưu!';
+                setTimeout(() => { btn.innerText = originalText; }, 1500);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
